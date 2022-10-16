@@ -1,16 +1,40 @@
+# FROM node:16 AS builder
+# WORKDIR /app
+# COPY package*.json  ./
+# COPY tsconfig.json  ./
+# RUN npm ci
+# COPY src ./src
+# RUN npm run build
+
+# FROM node:16 AS modules
+# WORKDIR /app
+# COPY package*.json  ./
+# RUN npm ci --omit dev
+# COPY prisma ./prisma
+# RUN npm run generate
+
+# FROM node:16-alpine
+# WORKDIR /app
+# ENV NODE_ENV=production
+# COPY --from=builder /app/dist ./
+# COPY --from=modules /app/node_modules ./node_modules
+# CMD ["main.js"]
+
 FROM node:16 AS builder
 WORKDIR /app
 COPY package*.json  ./
 COPY tsconfig.json  ./
 RUN npm ci
-COPY prisma ./prisma
-RUN npm run generate
 COPY src ./src
 RUN npm run build
 
-FROM gcr.io/distroless/nodejs:16
-COPY --from=builder /app/dist /app
-COPY --from=builder /app/node_modules /app/node_modules
+RUN npm ci --omit dev
+COPY prisma ./prisma
+RUN npm run generate
+
+FROM node:16-alpine
 WORKDIR /app
-EXPOSE 3000
+ENV NODE_ENV=production
+COPY --from=builder /app/dist ./
+COPY --from=builder /app/node_modules ./node_modules
 CMD ["main.js"]
