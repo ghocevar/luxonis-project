@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=flats-db
+    ports:
+      - '5432:5432'
+    volumes:
+      - flats-data:/var/lib/postgresql/data
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghocevar/luxonis-project-api:latest
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/flats-db?schema=public
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+
+volumes:
+  flats-data: {}
