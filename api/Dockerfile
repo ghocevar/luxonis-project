@@ -3,12 +3,12 @@ WORKDIR /app
 COPY package*.json  ./
 COPY tsconfig.json  ./
 RUN npm ci
+COPY prisma ./prisma
+RUN npm run prisma:generate
 COPY src ./src
 RUN npm run build
 
 RUN npm ci --omit dev
-COPY prisma ./prisma
-RUN npm run generate
 
 FROM node:16-alpine
 WORKDIR /app

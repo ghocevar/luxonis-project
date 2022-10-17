@@ -1,9 +1,9 @@
 {
-  "name": "luxonis-project",
+  "name": "luxonis-project-api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "generate": "prisma generate",
+    "prisma:generate": "prisma generate",
     "build": "rm -rf dist/ && tsc",
     "watch": "tsc --watch",
     "start:dev": "nodemon dist/main",
