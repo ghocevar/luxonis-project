@@ -13,7 +13,7 @@ services:
       - flats-data:/var/lib/postgresql/data
   api:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile
     image: ghocevar/luxonis-project-api:latest
     environment:
