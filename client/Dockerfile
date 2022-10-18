@@ -1,4 +1,4 @@
-FROM node:16-alpine AS builder
+FROM node:18-alpine AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -9,7 +9,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 COPY . .
 RUN npm run build
 
-FROM node:16-alpine
+FROM node:18-alpine
 WORKDIR /app
 
 ENV NODE_ENV production
