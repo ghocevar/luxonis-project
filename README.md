@@ -42,6 +42,11 @@ and compile TypeScript to JavaScript.
 
 To run development: `npm run start:dev` (`watch` command have to be running so to see changes).
 
+Server has two endpoints: 
+1. `/api/v1/flats`, which returns 20 records from db. You can modify request 
+with `take` and `skip` query parameters.
+2. `/api/v1/flats/scrape`, which clears all the records from the db and fetches new data.
+
 ##### Client
 
 ```bash
