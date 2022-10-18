@@ -6,7 +6,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
     "build": "rm -rf dist/ && tsc",
-    "watch": "tsc --watch",
+    "watch": "tsc --build --watch",
     "start:dev": "nodemon dist/main",
     "start:prod": "node dist/main"
   },
