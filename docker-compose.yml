@@ -11,6 +11,15 @@ services:
       - '5432:5432'
     volumes:
       - flats-data:/var/lib/postgresql/data
+  prisma-migrate:
+    build:
+      context: ./api/prisma
+      dockerfile: Dockerfile
+    image: ghocevar/luxonis-project-prisma-migrate:latest
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/flats-db?schema=public
+    depends_on:
+      - postgres
   api:
     build:
       context: ./api

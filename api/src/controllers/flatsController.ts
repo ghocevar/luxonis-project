@@ -29,7 +29,7 @@ export const getAllFlats = async (req: Request, res: Response) => {
     flatsCount = await prisma.flat.count();
 
     if (flatsCount === 0) {
-      populateFlats();
+      await populateFlats();
 
       flats = await prisma.flat.findMany({
         take: takeNumber,
