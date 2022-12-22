@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'api',
-      script: 'npm run start:prod',
+      script: 'dist/main.js',
       port: 3000,
     },
   ],

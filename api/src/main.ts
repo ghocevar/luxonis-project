@@ -7,11 +7,16 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(express.json());
 app.use(
   cors({
     origin: '*',
   })
 );
+
+app.get('/', (_req: Request, res: Response) => {
+  res.send('Hello World!');
+});
 
 app.use('/api/v1/flats', flatsRouter);
 
