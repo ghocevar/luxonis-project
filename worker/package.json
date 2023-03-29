@@ -1,0 +1,20 @@
+{
+	"name": "worker-api",
+	"version": "0.1.0",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "wrangler dev",
+		"generate": "drizzle-kit generate:sqlite --schema=src/schema.ts",
+		"up": "drizzle-kit up:sqlite --schema=src/schema.ts"
+	},
+	"dependencies": {
+		"drizzle-orm": "^0.23.2",
+		"itty-router": "^3.0.12"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230321.0",
+		"drizzle-kit": "^0.17.1",
+		"typescript": "^5.0.2",
+		"wrangler": "^2.13.0"
+	}
+}
