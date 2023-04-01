@@ -4,8 +4,8 @@
 	"main": "src/index.ts",
 	"scripts": {
 		"dev": "wrangler dev",
-		"generate": "drizzle-kit generate:sqlite --schema=src/schema.ts",
-		"up": "drizzle-kit up:sqlite --schema=src/schema.ts"
+		"generate": "drizzle-kit generate:sqlite --schema=src/d1/schema.ts",
+		"up": "drizzle-kit up:sqlite --schema=src/d1/schema.ts"
 	},
 	"dependencies": {
 		"drizzle-orm": "^0.23.2",
