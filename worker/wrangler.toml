@@ -3,6 +3,6 @@ main = "src/index.ts"
 compatibility_date = "2022-06-30"
 
 [[ d1_databases ]]
-binding = "DB" 
+binding = "DB"
 database_name = "flats-db"
 database_id = "1cb92f2e-9036-4ecf-bda0-a8524b51f107"

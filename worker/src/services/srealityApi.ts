@@ -1,4 +1,4 @@
-import { selectFields } from "../selectors/selectFields";
+import { selectFlatFields } from "../selectors/selectFlatFields";
 
 const perPage = 500;
 
@@ -9,8 +9,10 @@ export const getFlats = async () => {
 	try {
 		const res = await fetch(flatsUrl);
 		const data = (await res.json()) as any;
-		return data._embedded.estates.map((estate: any) => selectFields(estate));
+		return data._embedded.estates.map((estate: any) =>
+			selectFlatFields(estate)
+		);
 	} catch (error) {
-		console.log(error);
+		throw new Error(error);
 	}
 };
