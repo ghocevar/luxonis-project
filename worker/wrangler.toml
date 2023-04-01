@@ -1,4 +1,4 @@
-name = "worker-api"
+name = "luxonis-project-worker-api"
 main = "src/index.ts"
 compatibility_date = "2022-06-30"
 
